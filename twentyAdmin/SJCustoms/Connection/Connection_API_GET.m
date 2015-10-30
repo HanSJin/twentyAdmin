@@ -37,7 +37,7 @@
         NSLog(@"Connect -> \"Fail\" [result:%d, status:%d]", result, (int)[response statusCode]);
     }
     NSString *log = [NSString stringWithFormat:@"%@ \n\n", [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]];
-//    NSLog(log);
+    NSLog(log);
     
     return data;
 }

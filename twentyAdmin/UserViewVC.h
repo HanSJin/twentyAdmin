@@ -10,4 +10,6 @@
 
 @interface UserViewVC : UIViewController
 
+@property (nonatomic, strong) NSString *memberOrEditor;
+
 @end

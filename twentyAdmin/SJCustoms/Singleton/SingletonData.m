@@ -29,8 +29,6 @@
 
 - (id)init {
     if (self = [super init]) {
-        memberNum = 0;
-        lastSelectedViewStackIndex = 0;
     }
     return self;
 }

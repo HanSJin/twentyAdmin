@@ -10,4 +10,7 @@
 
 @interface EditorPostListVC : UIViewController
 
+@property (nonatomic, strong) NSString *editor_mb_no;
+@property (nonatomic, strong) NSString *editor_mb_name;
+
 @end

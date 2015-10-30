@@ -8,6 +8,16 @@
 
 #import "MemberOb.h"
 
-@implementation MemberOb
+@implementation MemberOb {
+    
+}
+
+
+- (id)initWithName:(NSString *)aName {
+    if ((self = [super init])) {
+        
+    }
+    return self;
+}
 
 @end

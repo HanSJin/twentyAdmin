@@ -8,6 +8,16 @@
 
 #import "EditorPostOb.h"
 
-@implementation EditorPostOb
+@implementation EditorPostOb {
+    
+}
+
+- (id)initWithName:(NSString *)aName {
+    if ((self = [super init])) {
+        
+    }
+    return self;
+}
+
 
 @end

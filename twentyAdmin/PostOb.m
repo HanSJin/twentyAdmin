@@ -8,6 +8,15 @@
 
 #import "PostOb.h"
 
-@implementation PostOb
+@implementation PostOb {
+    
+}
+
+- (id)initWithName:(NSString *)aName {
+    if ((self = [super init])) {
+        
+    }
+    return self;
+}
 
 @end

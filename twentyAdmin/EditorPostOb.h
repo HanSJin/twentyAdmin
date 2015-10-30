@@ -10,4 +10,14 @@
 
 @interface EditorPostOb : NSObject
 
+@property (nonatomic, strong) NSString *wr_type;
+@property (nonatomic, strong) NSString *bo_table;
+@property (nonatomic, strong) NSString *wr_id;
+@property (nonatomic, strong) NSString *wr_subject;
+@property (nonatomic, strong) NSString *wr_datetime;
+@property (nonatomic, strong) NSString *wr_thumb_url;
+@property (nonatomic, strong) NSString *is_publish;
+
+- (id)initWithName:(NSString *)aName;
+
 @end

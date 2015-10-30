@@ -17,7 +17,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // APNS에 디바이스를 등록한다.
+    
+    // 여기까지해서 푸시 승인 알렉트 뷰 출력 확인함. push_branch  -2
+    // APNS에 디바이스를 등록한다.
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
+    application.applicationIconBadgeNumber = 0;
+    
     return YES;
+}
+
+// 성공시
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // DATA -> trimSTR
+    const unsigned *tokenBytes = [deviceToken bytes];
+    NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+                          ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+                          ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+                          ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+    NSLog(@"push token : %@", hexToken);
+    
+    // trimSTR -> DATA
+//    NSData* hexTokenData = [hexToken dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    // 푸시 토큰 저장 - 키체인
+//    [KeychainHelper saveWithKey:@"push_token_twenty" andData:hexTokenData];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
